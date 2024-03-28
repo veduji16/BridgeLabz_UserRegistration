@@ -9,7 +9,7 @@ class UserRegistrationTest {
 
     @Test
     void checkFirstName1() {
-        UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890","Hellobyee");
+        UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890","Hellobyee1");
         String result = userRegistration.isValidFirstName();
         Assertions.assertEquals("HAPPY", result);
     }
@@ -25,7 +25,7 @@ class UserRegistrationTest {
 
     @Test
     void checkLastName1() {
-        UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890" , "Hellobyee");
+        UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890" , "Hellobyee1");
         String result = userRegistration.isValidLastName();
         Assertions.assertEquals("HAPPY", result);
     }
@@ -41,7 +41,7 @@ class UserRegistrationTest {
 
     @Test
     void checkEmail1() {
-        UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890" , "Hellobyee");
+        UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890" , "Hellobyee1");
         String result = userRegistration.isValidEmail();
         Assertions.assertEquals("HAPPY", result);
     }
@@ -57,7 +57,7 @@ class UserRegistrationTest {
 
     @Test
     void checkNumber1() {
-        UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890" , "Hellobyee");
+        UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890" , "Hellobyee1");
         String result = userRegistration.isValidNumber();
         Assertions.assertEquals("HAPPY", result);
     }
@@ -73,7 +73,7 @@ class UserRegistrationTest {
 
     @Test
     void checkPassword1() {
-        UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890", "Hellobyee");
+        UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890", "Hellobyee1");
         String result = userRegistration.isValidPassword();
         Assertions.assertEquals("HAPPY", result);
     }
