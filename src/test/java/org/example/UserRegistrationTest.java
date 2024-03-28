@@ -5,99 +5,136 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Arrays;
-import java.util.Collection;
-
 class UserRegistrationTest {
 
     // Test Cases for First Name
 
     @Test
-    void checkFirstName1() {
+    void checkFirstNameValid() {
         UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890",
                 "Hellobyee@1");
-        String result = userRegistration.isValidFirstName();
-        Assertions.assertEquals("HAPPY", result);
+        try {
+            userRegistration.isValidFirstName();
+            Assertions.assertEquals("HAPPY", "HAPPY");
+        } catch (InvalidFirstNameException e) {
+            Assertions.fail("Unexpected InvalidFirstNameException");
+        }
     }
 
     @Test
-    void checkFirstName2() {
+    void checkFirstNameInvalid() {
         UserRegistration userRegistration = new UserRegistration("ved", "jain", "abc.xyzgmail.com", "91123456790",
                 "hellobyee");
-        String result = userRegistration.isValidFirstName();
-        Assertions.assertEquals("SAD", result);
+        try {
+            userRegistration.isValidFirstName();
+            Assertions.fail("Expected InvalidFirstNameException was not thrown");
+        } catch (InvalidFirstNameException e) {
+            Assertions.assertEquals("Invalid first name", e.getMessage());
+        }
     }
 
     // Test Cases for Last Name
 
     @Test
-    void checkLastName1() {
+    void checkLastNameValid() {
         UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890",
                 "Hellobyee@1");
-        String result = userRegistration.isValidLastName();
-        Assertions.assertEquals("HAPPY", result);
+        try {
+            userRegistration.isValidLastName();
+            Assertions.assertEquals("HAPPY", "HAPPY");
+        } catch (InvalidLastNameException e) {
+            Assertions.fail("Unexpected InvalidLastNameException");
+        }
     }
 
     @Test
-    void checkLastName2() {
+    void checkLastNameInvalid() {
         UserRegistration userRegistration = new UserRegistration("ved", "jain", "abc.xyzgmail.com", "91123456790",
                 "hellobyee");
-        String result = userRegistration.isValidLastName();
-        Assertions.assertEquals("SAD", result);
+        try {
+            userRegistration.isValidLastName();
+            Assertions.fail("Expected InvalidLastNameException was not thrown");
+        } catch (InvalidLastNameException e) {
+            Assertions.assertEquals("Invalid last name", e.getMessage());
+        }
     }
 
     // Test Cases for Email
 
     @Test
-    void checkEmail1() {
+    void checkEmailValid() {
         UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890",
                 "Hellobyee@1");
-        String result = userRegistration.isValidEmail();
-        Assertions.assertEquals("HAPPY", result);
+        try {
+            userRegistration.isValidEmail();
+            Assertions.assertEquals("HAPPY", "HAPPY");
+        } catch (InvalidEmailException e) {
+            Assertions.fail("Unexpected InvalidEmailException");
+        }
     }
 
     @Test
-    void checkEmail2() {
+    void checkEmailInvalid() {
         UserRegistration userRegistration = new UserRegistration("ved", "jain", "abc.xyzgmail.com", "91123456790",
                 "hellobyee");
-        String result = userRegistration.isValidEmail();
-        Assertions.assertEquals("SAD", result);
+        try {
+            userRegistration.isValidEmail();
+            Assertions.fail("Expected InvalidEmailException was not thrown");
+        } catch (InvalidEmailException e) {
+            Assertions.assertEquals("Invalid email", e.getMessage());
+        }
     }
 
     // Test Cases for Number
 
     @Test
-    void checkNumber1() {
+    void checkNumberValid() {
         UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890",
                 "Hellobyee@1");
-        String result = userRegistration.isValidNumber();
-        Assertions.assertEquals("HAPPY", result);
+        try {
+            userRegistration.isValidNumber();
+            Assertions.assertEquals("HAPPY", "HAPPY");
+        } catch (InvalidNumberException e) {
+            Assertions.fail("Unexpected InvalidNumberException");
+        }
     }
 
     @Test
-    void checkNumber2() {
+    void checkNumberInvalid() {
         UserRegistration userRegistration = new UserRegistration("ved", "jain", "abc.xyzgmail.com", "91123456790",
                 "hellobyee");
-        String result = userRegistration.isValidNumber();
-        Assertions.assertEquals("SAD", result);
+        try {
+            userRegistration.isValidNumber();
+            Assertions.fail("Expected InvalidNumberException was not thrown");
+        } catch (InvalidNumberException e) {
+            Assertions.assertEquals("Invalid number", e.getMessage());
+        }
     }
 
     // Test Cases for Password
 
     @Test
-    void checkPassword1() {
+    void checkPasswordValid() {
         UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890",
                 "Hellobyee@1");
-        String result = userRegistration.isValidPassword();
-        Assertions.assertEquals("HAPPY", result);
+        try {
+            userRegistration.isValidPassword();
+            Assertions.assertEquals("HAPPY", "HAPPY");
+        } catch (InvalidPasswordException e) {
+            Assertions.fail("Unexpected InvalidPasswordException");
+        }
     }
 
     @Test
-    void checkPassword2() {
+    void checkPasswordInvalid() {
         UserRegistration userRegistration = new UserRegistration("ved", "jain", "abc.xyzgmail.com", "91123456790",
                 "hellobyee");
-        String result = userRegistration.isValidPassword();
-        Assertions.assertEquals("SAD", result);
+        try {
+            userRegistration.isValidPassword();
+            Assertions.fail("Expected InvalidPasswordException was not thrown");
+        } catch (InvalidPasswordException e) {
+            Assertions.assertEquals("Invalid password", e.getMessage());
+        }
     }
 
     // Test Cases for Sample Emails
@@ -113,12 +150,15 @@ class UserRegistrationTest {
             "abc@1.com",
             "abc@gmail.com.com",
             "abc+100@gmail.com" })
-    void checkSampleEmails1(String input) {
+    void checkSampleEmailsValid(String input) {
         UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890",
                 "Hellobyee@1");
-        String result = userRegistration.isValidEmail();
-        System.out.println(result);
-        Assertions.assertEquals("HAPPY", result);
+        try {
+            userRegistration.isValidEmail();
+            Assertions.assertEquals("HAPPY", "HAPPY");
+        } catch (InvalidEmailException e) {
+            Assertions.fail("Unexpected InvalidEmailException");
+        }
     }
 
     @ParameterizedTest
@@ -136,28 +176,30 @@ class UserRegistrationTest {
             "abc@abc@gmail.com",
             "abc@gmail.com.1a",
             "abc@gmail.com.aa.au" })
-    void checkSampleEmails2(String input) {
+    void checkSampleEmailsInvalid(String input) {
         UserRegistration userRegistration = new UserRegistration("ved", "jain", "abcxyzgmail.com", "91123456790",
                 "hellobyee");
-        String result = userRegistration.isValidEmail();
-        System.out.println(result);
-        Assertions.assertEquals("SAD", result);
+        try {
+            userRegistration.isValidEmail();
+            Assertions.fail("Expected InvalidEmailException was not thrown");
+        } catch (InvalidEmailException e) {
+            Assertions.assertEquals("Invalid email", e.getMessage());
+        }
     }
 
     // Test Cases for Validate User
+
     @Test
-    void validateUser1() {
+    void validateUserValid() {
         UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890",
                 "Hellobyee@1");
-        String result = userRegistration.validateUser();
-        Assertions.assertEquals("HAPPY", result);
+        Assertions.assertEquals("HAPPY", userRegistration.validateUser());
     }
 
     @Test
-    void validateUser2() {
+    void validateUserInvalid() {
         UserRegistration userRegistration = new UserRegistration("ved", "jain", "abc.xyzgmail.com", "91123456790",
                 "hellobyee");
-        String result = userRegistration.validateUser();
-        Assertions.assertEquals("SAD", result);
+        Assertions.assertEquals("SAD", userRegistration.validateUser());
     }
 }
