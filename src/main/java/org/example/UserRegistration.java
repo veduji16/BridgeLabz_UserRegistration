@@ -8,11 +8,13 @@ public class UserRegistration {
     String firstName;
     String lastName;
     String email;
+    String number;
 
-    UserRegistration(String firstName, String lastName, String email) {
+    UserRegistration(String firstName, String lastName, String email, String number) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.number = number;
     }
 
     public String isValidFirstName() {
@@ -41,6 +43,17 @@ public class UserRegistration {
         String regex = "^([a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
+        if (matcher.matches()) {
+            return "HAPPY";
+        } else {
+            return "SAD";
+        }
+    }
+
+    public String isValidNumber() {
+        String regex = "^([0-9]{2} [0-9]{10})$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(number);
         if (matcher.matches()) {
             return "HAPPY";
         } else {
