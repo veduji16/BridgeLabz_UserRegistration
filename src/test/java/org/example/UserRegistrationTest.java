@@ -95,11 +95,30 @@ class UserRegistrationTest {
         Assertions.assertEquals("SAD", result);
     }
 
+    // Test Cases for Sample Emails
+
     @Test
     void checkSampleEmails() {
         UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890",
                 "Hellobyee@1");
         String result = userRegistration.testEmailValidation();
         Assertions.assertEquals("HAPPY", result);
+    }
+
+    // Test Cases for Validate User
+    @Test
+    void validateUser1() {
+        UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890",
+                "Hellobyee@1");
+        String result = userRegistration.validateUser();
+        Assertions.assertEquals("HAPPY", result);
+    }
+
+    @Test
+    void validateUser2() {
+        UserRegistration userRegistration = new UserRegistration("ved", "jain", "abc.xyzgmail.com", "91123456790",
+                "hellobyee");
+        String result = userRegistration.validateUser();
+        Assertions.assertEquals("SAD", result);
     }
 }
