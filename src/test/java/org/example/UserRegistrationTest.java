@@ -2,6 +2,11 @@ package org.example;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 class UserRegistrationTest {
 
@@ -97,12 +102,46 @@ class UserRegistrationTest {
 
     // Test Cases for Sample Emails
 
-    @Test
-    void checkSampleEmails() {
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "abc@yahoo.com",
+            "abc-100@yahoo.com",
+            "abc.100@yahoo.com",
+            "abc111@abc.com",
+            "abc-100@abc.net",
+            "abc.100@abc.com.au",
+            "abc@1.com",
+            "abc@gmail.com.com",
+            "abc+100@gmail.com" })
+    void checkSampleEmails1(String input) {
         UserRegistration userRegistration = new UserRegistration("Ved", "Jain", "abc.xyz@gmail.com", "91 1234567890",
                 "Hellobyee@1");
-        String result = userRegistration.testEmailValidation();
+        String result = userRegistration.isValidEmail();
+        System.out.println(result);
         Assertions.assertEquals("HAPPY", result);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "abc",
+            "abc@.com.my",
+            "abc123@gmail.a",
+            "abc123@.com",
+            "abc123@.com.com",
+            ".abc@abc.com",
+            "abc()*@gmail.com",
+            "abc@%*.com",
+            "abc..2002@gmail.com",
+            "abc.@gmail.com",
+            "abc@abc@gmail.com",
+            "abc@gmail.com.1a",
+            "abc@gmail.com.aa.au" })
+    void checkSampleEmails2(String input) {
+        UserRegistration userRegistration = new UserRegistration("ved", "jain", "abcxyzgmail.com", "91123456790",
+                "hellobyee");
+        String result = userRegistration.isValidEmail();
+        System.out.println(result);
+        Assertions.assertEquals("SAD", result);
     }
 
     // Test Cases for Validate User
